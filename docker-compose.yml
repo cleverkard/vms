@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    command: >
+      sh -c "python /usr/src/app/main.py"
+    volumes:
+      - .:/usr/src
+    ports:
+      - "8080:8080"
+    env_file: "environment.env"
