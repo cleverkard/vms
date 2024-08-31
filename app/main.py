@@ -1,5 +1,14 @@
-from nicegui import ui
+import os
 
-ui.label('Hello NiceGUI!')
+from fastapi import FastAPI
 
-ui.run()
+from app.api import health
+
+
+def create_application() -> FastAPI:
+    application = FastAPI()
+    application.include_router(health.router)
+    return application
+
+
+app = create_application()
